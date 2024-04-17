@@ -1,0 +1,50 @@
+def testa_valores(): #Chama as outras funcoes, fazendo o papel de main
+    numero_1 = verifica_numero()
+    sinal = verifica_sinal()
+    numero_2 = verifica_numero()
+    resultado = realiza_conta(numero_1, sinal, numero_2)
+    print(resultado)
+
+def verifica_numero(): #Verifica se o que foi digitado realmente é um numero
+    while True:
+        try:
+            numero = float(input('Digite o numero: '))
+            return numero
+        except ValueError:
+            print('Você não digitou um número válido!')
+
+def verifica_sinal(): #Verifica se o sinal digitado pertene a lista dos sinais para realizar a conta
+    sinal = input('Digite o sinal[+ - * ** / //]: ')
+    while True:
+        match sinal:
+            case '-':
+                return sinal
+            case '+':
+                return sinal
+            case '/':
+                return sinal
+            case '*':
+                return sinal
+            case '**':
+                return sinal
+            case '//':
+                return sinal
+            case _:
+                sinal = input('Sinal invalido, digite novamente[+ - * ** / //]: ')
+
+def realiza_conta(numero_1, sinal, numero_2): #Apos todos os testes feitos, esta e a ultima etapada, realizando a conta e retornando o seu resultado
+    match sinal:
+        case '-':
+            return numero_1 - numero_2
+        case '+':
+            return numero_1 + numero_2
+        case '/':
+            return numero_1 / numero_2 if numero_2 != 0 else ZeroDivisionError('Tentou dividir por 0!')
+        case '*':
+            return numero_1 * numero_2
+        case '**':
+            return numero_1 ** numero_2
+        case '//':
+            return numero_1 // numero_2
+
+testa_valores()
